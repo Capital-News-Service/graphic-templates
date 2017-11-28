@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>
+			Capital News Service HighCharts Graphic Template, Highmaps Subset, Version 2 (1)
+</title>
+
+<!--Log:
+	
+	Template by Evan Berkowitz/Capital News Service
+
+Begin necessary code here: -->
+
+<link rel="stylesheet" type="text/css" href="css/css_maps.css">
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Poppins:300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
+
+<!--ENABLE THE FOLLOWING FOR POLITICAL CHARTS TO COLOR CODE BY PARTY. Republican=0, Democrat=1. Independent=0.5. Does not allow for multiple third parties, but this capability could be added.
+
+
+	colorAxis: {
+            min: 0,
+            max: 1,
+            type: 'scalar',
+            minColor: '#b20d0d',
+            maxColor: '#2e2c76',
+            stops: [
+                [0, '#b20d0d'],
+                [0.5, '#808080'],
+                [1, '#2e2c76']
+            ]
+			
+			},
+
+
+-->
+	
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/highmaps.js"></script>
+<script src="js/mdmap.js"></script>
+<div id="container" style="min-width: 310px; max-width: 600px; height: 600px; margin: 0 auto"></div>
+<script>
+	$(function () {
+
+    // Prepare demo data
+   var data = [
+        {
+            "hc-key": "us-md-047",
+            "value": 0
+			//Worcester County
+        },
+        {
+            "hc-key": "us-md-039",
+            "value": 1
+			//Somerset County
+        },
+        {
+            "hc-key": "us-md-037",
+            "value": 2
+			//St. Mary's County
+        },
+        {
+            "hc-key": "us-md-019",
+            "value": 3
+			//Dorchester County
+        },
+        {
+            "hc-key": "us-md-027",
+            "value": 4
+			//Howard County
+        },
+        {
+            "hc-key": "us-md-021",
+            "value": 5
+			//Frederick County
+        },
+        {
+            "hc-key": "us-md-031",
+            "value": 6
+			//Montgomery County
+        },
+        {
+            "hc-key": "us-md-023",
+            "value": 7
+			//Garrett County
+        },
+        {
+            "hc-key": "us-md-003",
+            "value": 8
+			//Anne Arundel County
+        },
+        {
+            "hc-key": "us-md-033",
+            "value": 9
+			//Prince George's County
+        },
+        {
+            "hc-key": "us-md-017",
+            "value": 10
+			//Charles County
+        },
+        {
+            "hc-key": "us-md-510",
+            "value": 11
+			//Baltimore City
+        },
+        {
+            "hc-key": "us-md-005",
+            "value": 12
+			//Baltimore County
+        },
+        {
+            "hc-key": "us-md-001",
+            "value": 13
+			//Allegany County
+        },
+        {
+            "hc-key": "us-md-043",
+            "value": 14
+			//Washington County
+        },
+        {
+            "hc-key": "us-md-035",
+            "value": 15
+			//Queen Anne's County
+        },
+        {
+            "hc-key": "us-md-041",
+            "value": 16
+			//Talbot County
+        },
+        {
+            "hc-key": "us-md-011",
+            "value": 17
+			//Caroline County
+        },
+        {
+            "hc-key": "us-md-045",
+            "value": 18
+			//Wicomico County
+        },
+        {
+            "hc-key": "us-md-013",
+            "value": 19
+			//Carroll County
+        },
+        {
+            "hc-key": "us-md-015",
+            "value": 20
+			//Cecil County
+        },
+        {
+            "hc-key": "us-md-029",
+            "value": 21
+			//Kent County
+        },
+        {
+            "hc-key": "us-md-009",
+            "value": 22
+			//Calvert County
+        },
+        {
+            "hc-key": "us-md-025",
+            "value": 23
+			//Harford County
+        }
+    ];
+
+	
+	
+        Highcharts.mapChart('container', {
+    title: {
+        text: 'Headline goes in this spot here',
+		
+		
+			//INSERT HEADLINE INSIDE APOSTROPHES ABOVE ^^
+		
+		
+		align:'left'
+    },
+  subtitle: {
+	   	align:'left',
+        text: '<span style="fill:#fbd603; font-family:sans-serif; stroke:#fbd603; stroke-width:10px; font-weight:800;">________________________________________</span><br/><span style="fill:transparent;">Space Filler Do Not Touch</span><br/>BY FIRSTNAME LASTNAME<a href="http://cnsmaryland.org" target="_blank" style="text-decoration:none;"> | CAPITAL NEWS SERVICE</a>'
+	   
+	   		//INSERT YOUR NAME IN ALLCAPS IN PLACE OF 'FIRSTNAME LASTNAME' IN CHUNK OF CODE ABOVE ^^
+	 
+    },
+   
+			
+    credits: {
+        text: 'Source: Capital News Service, Map',
+		href: 'https://cnsmaryland.org',
+		align: 'right'
+    },
+			
+		tooltip: {
+		borderRadius: 0,
+		shadow: false,
+		useHTML: true,
+		formatter: function () {
+			var s = '<b style="font-family: \'Droid Serif\', serif; fill:#2c2c2c; font-size:12pt; font-weight:400;">' + this.key + '</b><span style="font-family: \'Poppins\', serif; fill:grey; font-size:10pt; font-weight:300;"><br/>';
+                     s += 'Data point' + this.point.value + '</span>';
+                     return s;
+		},
+		
+		//BE SURE TO INSERT YOUR UNITS INTO THE LAST PART OF THE CODE ABOVE ^^. EVERYTHING ELSE SHOULD BE FORMATTED FOR YOU.
+    },
+			
+	//INSERT THE NAME AND URL OF YOUR SOURCE ABOVE^^. FOR MULTIPLE SOURCES, LIST ALL IN THE "TEXT" PART AND DELETE OR COMMENT OUT THE "HREF" COMPONENT.
+			
+	exporting: {
+		enabled: false
+	},
+			
+			mapNavigation: {
+            enabled: false,
+       
+        },
+
+        colorAxis: {
+            min: 1,
+            max: 50,
+            type: 'scalar',
+            minColor: '#fbd603',
+            maxColor: '#ffffff',
+			
+			},
+
+			//for Political Party Charts, Replace the colorAxis code above with the colorAxis code commented out at the top of this file.
+			
+        series : [{
+            data : data,
+            mapData: Highcharts.maps['countries/us/us-md-all'],
+            joinBy: 'hc-key',
+            name: 'Name of Data Set',
+            dataLabels: {
+                enabled: false,//Set to true if you want
+                format: '{point.name}'
+            }
+        }, {
+            name: 'Separators',
+            type: 'mapline',
+            data: Highcharts.geojson(Highcharts.maps['countries/us/us-md-all'], 'mapline'),
+            color: '#ffffff',
+            showInLegend: false,
+            enableMouseTracking: false
+        }]
+
+			
+   
+});
+	});
+	
+	
+	
+	</script>
+
+</body>
+</html>

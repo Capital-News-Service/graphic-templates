@@ -1,0 +1,186 @@
+@charset "UTF-8";
+/* CSS Document */
+@import 'highcharts.css';
+
+
+/*Styles area of area chart */
+.highcharts-area {
+	background-color: rgba(251, 214, 4, 0.3);
+}
+.highcharts-area:hover {
+	background-color: rgba(251, 214, 4, 0.6);
+}
+
+
+/* Styles axes */
+.highcharts-xaxis-labels {
+	font-family: 'Droid Serif', serif;
+	font-size:10pt;
+	fill:black;
+}
+.highcharts-yaxis-labels {
+	font-family: 'Poppins', sans-serif;
+	font-weight:300;
+	fill:grey;
+	font-size:8pt;
+}
+.highcharts-axis-line {
+	stroke: black;
+	stroke-width:5px;
+}
+.highcharts-axis-title {
+	font-family:'Droid Serif';
+	font-style:italic;
+	fill:grey;
+	font-weight:400;
+	font-size:8pt;
+	margin-left:0;
+}
+
+
+/*Styles background */
+.highcharts-background {
+	fill: white;
+	
+}
+
+/*Creates color palette*/
+.highcharts-color-0  {
+	fill:#fbd603;
+	stroke:#fbd603;
+}
+
+
+.highcharts-color-1  {
+	fill:#2c2c2c;
+	stroke:#2c2c2c;
+}
+
+
+.highcharts-color-2  {
+	fill:#990000;
+	stroke:#990000;
+}
+
+
+/*Begin New Colors*/
+
+
+.highcharts-color-3  {
+	fill:#057e6c;
+	stroke:#057e6c;
+}
+
+.highcharts-color-4  {
+	fill:#54007f;
+	stroke:#54007f;
+}
+
+.highcharts-color-5  {
+	fill:#a8a8a8;
+	stroke:#a8a8a8;
+}
+
+
+/*End of Color Palette*/
+
+.highcharts-credits {
+	font-family:'Droid Serif', serif;
+	font-weight:400;
+	font-size:9pt;
+	fill:#2c2c2c;
+}
+
+.highcharts-data-label text {
+	font-family: 'Poppins', sans-serif;
+	font-weight:300;
+	font-size:8pt;
+	fill:black;
+
+}
+
+
+.highcharts-grid-line {
+	stroke:grey;
+	stroke-width:1px;
+	stroke-dasharray:2;
+}
+
+
+/*Styles legend*/
+.highcharts-legend-box {
+	fill:white;
+}
+
+.highcharts-legend-item text {
+	fill:grey;
+	font-family:'Poppins', sans-serif;
+	font-weight:300;
+	font-size:9pt;
+	text-align:right;
+}
+
+
+
+.highcharts-title {
+	font-family: 'Droid Serif', serif;
+	font-weight:600;
+	font-size:24pt;
+	fill:#2c2c2c;
+	
+}
+
+.highcharts-subtitle {
+	font-family:'Poppins', sans-serif;
+	fill:grey;
+	font-weight:300;
+	font-size:8pt;
+}
+
+.highcharts-tooltip-box {
+	fill:white;
+	stroke:#2c2c2c;
+	stroke-width: 1px;
+	fill-opacity:1;
+}
+
+
+
+.highcharts-graph {
+	stroke-width:2px;
+	/*stroke:#fbd603;*/
+}
+
+.highcharts-plot-band {
+	fill: rgba(220, 220, 220, 0.5);
+}
+
+.highcharts-plot-band-label { 
+	font-family:'Droid Serif', serif;
+	font-size:8pt;
+	font-style:italic;
+	font-weight:400;
+	fill:#808080;
+}
+
+
+/*Styles the div that holds the highchart */
+div#container {
+	margin-top:20px;
+	margin-bottom:20px;
+	padding-left:20px;
+	padding-top:20px;
+	padding-right:30px;
+	padding-bottom:10px;
+	border-left:1px solid black;
+	border-bottom:14pt solid black;
+	border-top:1px solid black;
+	border-right:1px solid black;
+	box-shadow:5px 5px 10px gainsboro;
+	min-width: 310px;
+	max-width: 600px; 
+	height: 600px; 
+	margin-left:auto;
+	margin-right:auto;
+}
+

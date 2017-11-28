@@ -1,0 +1,341 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>
+			Capital News Service HighCharts Graphic Template, Highmaps Subset, Version 2 (1)
+</title>
+
+<!--Log:
+	
+	Template by Evan Berkowitz/Capital News Service
+
+Begin necessary code here: -->
+
+<link rel="stylesheet" type="text/css" href="css/css_maps.css">
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Poppins:300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
+
+<!--ENABLE THE FOLLOWING FOR POLITICAL CHARTS TO COLOR CODE BY PARTY. Republican=0, Democrat=1. Independent=0.5. Does not allow for multiple third parties, but this capability could be added.
+
+
+	colorAxis: {
+            min: 0,
+            max: 1,
+            type: 'scalar',
+            minColor: '#b20d0d',
+            maxColor: '#2e2c76',
+            stops: [
+                [0, '#b20d0d'],
+                [0.5, '#808080'],
+                [1, '#2e2c76']
+            ]
+			
+			},
+
+
+-->
+	
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/highmaps.js"></script>
+<script src="js/usmap.js"></script>
+<div id="container" style="min-width: 310px; max-width: 600px; height: 600px; margin: 0 auto"></div>
+<script>
+	$(function () {
+
+    // Prepare demo data
+    var data = [
+        {
+            "hc-key": "us-ma",
+            "value": 1
+        },
+        {
+            "hc-key": "us-wa",
+            "value": 2
+        },
+        {
+            "hc-key": "us-ca",
+            "value": 3
+        },
+        {
+            "hc-key": "us-or",
+            "value": 4
+        },
+        {
+            "hc-key": "us-wi",
+            "value": 5
+        },
+        {
+            "hc-key": "us-me",
+            "value": 6
+        },
+        {
+            "hc-key": "us-mi",
+            "value": 7
+        },
+        {
+            "hc-key": "us-nv",
+            "value": 8
+        },
+        {
+            "hc-key": "us-nm",
+            "value": 9
+        },
+        {
+            "hc-key": "us-co",
+            "value": 10
+        },
+        {
+            "hc-key": "us-wy",
+            "value": 11
+        },
+        {
+            "hc-key": "us-ks",
+            "value": 12
+        },
+        {
+            "hc-key": "us-ne",
+            "value": 13
+        },
+        {
+            "hc-key": "us-ok",
+            "value": 14
+        },
+        {
+            "hc-key": "us-mo",
+            "value": 15
+        },
+        {
+            "hc-key": "us-il",
+            "value": 16
+        },
+        {
+            "hc-key": "us-in",
+            "value": 17
+        },
+        {
+            "hc-key": "us-vt",
+            "value": 18
+        },
+        {
+            "hc-key": "us-ar",
+            "value": 19
+        },
+        {
+            "hc-key": "us-tx",
+            "value": 20
+        },
+        {
+            "hc-key": "us-ri",
+            "value": 21
+        },
+        {
+            "hc-key": "us-al",
+            "value": 22
+        },
+        {
+            "hc-key": "us-ms",
+            "value": 23
+        },
+        {
+            "hc-key": "us-nc",
+            "value": 24
+        },
+        {
+            "hc-key": "us-va",
+            "value": 25
+        },
+        {
+            "hc-key": "us-ia",
+            "value": 26
+        },
+        {
+            "hc-key": "us-md",
+            "value": 27
+        },
+        {
+            "hc-key": "us-de",
+            "value": 28
+        },
+        {
+            "hc-key": "us-pa",
+            "value": 29
+        },
+        {
+            "hc-key": "us-nj",
+            "value": 30
+        },
+        {
+            "hc-key": "us-ny",
+            "value": 31
+        },
+        {
+            "hc-key": "us-id",
+            "value": 32
+        },
+        {
+            "hc-key": "us-sd",
+            "value": 33
+        },
+        {
+            "hc-key": "us-ct",
+            "value": 34
+        },
+        {
+            "hc-key": "us-nh",
+            "value": 35
+        },
+        {
+            "hc-key": "us-ky",
+            "value": 36
+        },
+        {
+            "hc-key": "us-oh",
+            "value": 37
+        },
+        {
+            "hc-key": "us-tn",
+            "value": 38
+        },
+        {
+            "hc-key": "us-wv",
+            "value": 39
+        },
+        {
+            "hc-key": "us-la",
+            "value": 40
+        },
+        {
+            "hc-key": "us-fl",
+            "value": 41
+        },
+        {
+            "hc-key": "us-ga",
+            "value": 42
+        },
+        {
+            "hc-key": "us-sc",
+            "value": 43
+        },
+        {
+            "hc-key": "us-mn",
+            "value": 44
+        },
+        {
+            "hc-key": "us-mt",
+            "value": 45
+        },
+        {
+            "hc-key": "us-nd",
+            "value": 46
+        },
+        {
+            "hc-key": "us-az",
+            "value": 47
+        },
+        {
+            "hc-key": "us-ut",
+            "value": 48
+        },
+        {
+            "hc-key": "us-hi",
+            "value": 49
+        },
+        {
+            "hc-key": "us-ak",
+            "value": 50
+        },
+    ];
+
+	
+	
+        Highcharts.mapChart('container', {
+    title: {
+        text: 'Headline goes in this spot here',
+		
+		
+			//INSERT HEADLINE INSIDE APOSTROPHES ABOVE ^^
+		
+		
+		align:'left'
+    },
+  subtitle: {
+	   	align:'left',
+        text: '<span style="fill:#fbd603; font-family:sans-serif; stroke:#fbd603; stroke-width:10px; font-weight:800;">________________________________________</span><br/><span style="fill:transparent;">Space Filler Do Not Touch</span><br/>BY FIRSTNAME LASTNAME<a href="http://cnsmaryland.org" target="_blank" style="text-decoration:none;"> | CAPITAL NEWS SERVICE</a>'
+	   
+	   		//INSERT YOUR NAME IN ALLCAPS IN PLACE OF 'FIRSTNAME LASTNAME' IN CHUNK OF CODE ABOVE ^^
+	 
+    },
+   
+			
+    credits: {
+        text: 'Source: Capital News Service, Map',
+		href: 'https://cnsmaryland.org',
+		align: 'right'
+    },
+			
+		tooltip: {
+		borderRadius: 0,
+		shadow: false,
+		useHTML: true,
+		formatter: function () {
+			var s = '<b style="font-family: \'Droid Serif\', serif; fill:#2c2c2c; font-size:12pt; font-weight:400;">' + this.key + '</b><span style="font-family: \'Poppins\', serif; fill:grey; font-size:10pt; font-weight:300;"><br/>';
+                     s += 'Data point' + this.point.value + '</span>';
+                     return s;
+		},
+		
+		//BE SURE TO INSERT YOUR UNITS INTO THE LAST PART OF THE CODE ABOVE ^^. EVERYTHING ELSE SHOULD BE FORMATTED FOR YOU.
+    },
+			
+	//INSERT THE NAME AND URL OF YOUR SOURCE ABOVE^^. FOR MULTIPLE SOURCES, LIST ALL IN THE "TEXT" PART AND DELETE OR COMMENT OUT THE "HREF" COMPONENT.
+			
+	exporting: {
+		enabled: false
+	},
+			
+			mapNavigation: {
+            enabled: false,
+       
+        },
+
+        colorAxis: {
+            min: 1,
+            max: 50,
+            type: 'scalar',
+            minColor: '#fbd603',
+            maxColor: '#ffffff',
+			
+			},
+
+			//for Political Party Charts, Replace the colorAxis code above with the colorAxis code commented out at the top of this file.
+			
+        series : [{
+            data : data,
+            mapData: Highcharts.maps['countries/us/us-all'],
+            joinBy: 'hc-key',
+            name: 'Name of Data Set',
+            dataLabels: {
+                enabled: false,//Set to true if you want
+                format: '{point.name}'
+            }
+        }, {
+            name: 'Separators',
+            type: 'mapline',
+            data: Highcharts.geojson(Highcharts.maps['countries/us/us-all'], 'mapline'),
+            color: '#ffffff',
+            showInLegend: false,
+            enableMouseTracking: false
+        }]
+
+			
+   
+});
+	});
+	
+	
+	
+	</script>
+
+</body>
+</html>
