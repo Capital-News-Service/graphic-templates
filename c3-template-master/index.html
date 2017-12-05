@@ -7,9 +7,8 @@
     	Capital News Service C3 Graphic Template
     </title>
 
-    <!-- Load Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Poppins:300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
-
+    
     <!-- Load c3.css -->
 	<link href="css/c3.css" rel="stylesheet">
 
@@ -24,10 +23,10 @@
 
   <body>
    	<div id="container">
-   		<h1 class="c3-title">Title Goes Here</h1>
+   		<h1 class="highcharts-title">Fourty One Schools Have Dropped The Name Redskins Since 1990</h1>
 
-   		<text class="c3-subtitle" y="60">
-   			<tspan>BY FIRSTNAME LASTNAME</tspan>
+   		<text class="highcharts-subtitle" y="60">
+   			<tspan>BY JAKE GLUCK AND ADAM ZIELONKA</tspan>
    			<!-- ^^ PUT YOUR NAME HERE, TAKE CREDIT FOR YOUR COOL WORK ^^ -->
    			<tspan onclick="location.href=&quot;http://cnsmaryland.org&quot;"> | CAPITAL NEWS SERVICE</tspan>
    			<br>
@@ -42,19 +41,13 @@
 		//	THE DOCUMENTATION FOR C3 IS HERE http://c3js.org/reference.html
 		//	USE IT TO LOOK UP ANY ADDITIONAL OPTIONS YOU WOULD LIKE TO ADD
 		//  SOME HELPFULL FEATURES INCLUDE REGIONS, HIGHLIGHTING SPECIFIC POINTS, GRID LINES, SHOWING MULTIPLE CHARTS AT THE SAME TIME 
-
 		x = ['x', 0, 1, 2, 3];
-
 		//	^^ ENTER YOUR X-AXIS LABELS HERE ^^
-
 				category1 = ['Category 1', 0, 1, 2, 3];
 		
 				category2 = ['Category 2', 3, 2, 1, 0];
-
 				category3 = ['Category 3', 2, 2, 2, 2];
-
 		//	^^ ENTER YOUR DATA HERE, THE FIRST VALUE IS A STRING THAT IS THE NAME OF YOUR CATEGORY ^^
-
 		var chart = c3.generate({
 		    data: {
 		    	x: 'x',
@@ -63,15 +56,12 @@
 		            category1,
 		            category2,
 		            category3
-
 		            //MAKE SURE THESE MATCH THE DATA YOU CREATED ABOVE
 		        ],
 	
 		        type: 'bar'
-
 		        //	^^ INSERT CHART TYPE ABOVE. FOR THE PURPOSES OF THIS TEMPLATE, USE BAR, AREA, SCATTER, LINE OR SPLINE ^^
 		    },
-
 		    bar: {
 		        width: {
 		            ratio: .75 // this makes bar width 75% of length between ticks
@@ -126,7 +116,6 @@
 	     //      .remove();
     		// }
     		//UNCOMMENT ALL THIS IF YOU WANT THE DATA TO ANIMATE LEFT TO RIGHT
-
 		});
 
  	 </script>
