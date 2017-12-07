@@ -19,6 +19,9 @@
 	<!-- Load our css -->
 	<link href="css/css.css" rel="stylesheet">
 
+	<!-- Load kml lib 
+  	<script src="js/kml.js"></script>-->
+
   </head>
 
   <body>
@@ -26,135 +29,179 @@
    	</div>
    	<script type="text/javascript">
 
-		var planes = [                                        
-			["Yes", "Alabama School for the Blind", 33.433414, -86.089672],
-			["Yes", "Oneonta", 33.933531, -86.497233],
-			["Yes", "Red Mesa", 36.962363, -109.380999],
-			["Yes", "St. Johns", 34.501881, -109.388828],
-			["Yes", "Pocahontas", 36.280372, -90.982045],
-			["Yes", "La Veta", 37.504921, -105.008155],
-			["Yes", "Bryan County", 32.148889, -81.609395],
-			["Yes", "Social Circle", 33.659150, -83.729739],
-			["Yes", "Teton", 43.731241, -111.099449],
-			["Yes", "Momence", 41.162833, -87.671202],
-			["Yes", "Morris", 41.365001, -88.433708],
-			["Yes", "Nokomis", 39.304606, -89.295091],
-			["Yes", "Shawnee", 37.487593, -89.424646],
-			["Yes", "Sullivan", 39.606130, -88.608218],
-			["Yes", "Emmerich Manual", 39.733490, -86.152527],
-			["Yes", "Knox Community", 41.285392, -86.626422],
-			["Yes", "Liberal", 37.041416, -100.943536],
-			["Yes", "Little River", 38.398780, -98.016033],
-			["Yes", "North", 37.709429, -97.344919],
-			["Yes", "Cumberland", 36.971590, -82.995066],
-			["Yes", "Ringgold", 32.323372, -93.268080],
-			["Yes", "Camden-Frontier", 41.780811, -84.706443],
-			["Yes", "Clinton", 42.073955, -83.963072],
-			["Yes", "Paw Paw", 42.220546, -85.850442],
-			["Yes", "Sandusky", 43.4129323,-82.8231361],
-			["Yes", "Saranac", 42.927182,-85.2044784],
-			["Yes", "Canisteo-Greenwood", 42.2655849,-77.6099265],
-			["Yes", "Oriskany", 43.1620175,-75.3401622],
-			["Yes", "Manteo", 35.9162487,-75.67408],
-			["No", "Roanoke", 35.856241,-77.243872],
-			["Yes", "Anderson", 39.0696172,-84.3489941],
-			["Yes", "Arcadia", 41.1069639,-83.5156631],
-			["Yes", "Caldwell", 39.7508653,-81.5180354],
-			["Yes", "Coshocton", 40.2582311,-81.8459098],
-			["Yes", "Cuyahoga Heights", 41.4272786,-81.6429953],
-			["Yes", "Fort Loramie", 40.3444853,-84.3631185],
-			["Yes", "Indian Creek", 40.3768448,-80.7155146],
-			["Yes", "Ledgemont", 41.6906982,-81.0470352],
-			["Yes", "Port Clinton", 41.5034856,-82.938036],
-			["Yes", "St. Henry", 40.4163863,-84.6350239],
-			["Yes", "Utica", 40.2375267,-82.4468565],
-			["Yes", "Wapakoneta", 40.583254,-84.1947976],
-			["Yes", "Kingston", 34.0015516,-96.7143181],
-			["Yes", "McLoud", 35.4251207,-97.1012958],
-			["Yes", "Rush Springs", 34.7830641,-97.9626793],
-			["Yes", "Union", 36.066442,-95.8704596],
-			["Yes", "Neshaminy", 40.1576835,-74.9486352],
-			["Yes", "Sayre Area", 41.9819287,-76.5233722],
-			["Yes", "Loudon", 35.7266094,-84.3508921],
-			["Yes", "Donna", 26.1718939,-98.0366318],
-			["Yes", "Wellpinit", 47.899058,-117.9883683],
-			["Yes", "Hurricane", 38.4377203,-82.0059362],
-			["No", "Belding", 43.0910763,-85.2213616],
-			["No", "Calaveras", 38.19976,-120.684689],
-			["No", "Chowchilla", 37.1160065,-120.262662],
-			["No", "Gustine", 37.2609635,-121.0009993],
-			["No", "Tulare Union", 36.2084311,-119.3389192],
-			["No", "Conrad Schools of Science", 39.7228894,-75.601351],
-			["No", "Goshen", 41.580479, -85.823435],
-			["No", "North Side", 41.0976711,-85.1352581],
-			["No", "Lancaster", 42.9299409,-78.6709603],
-			["No", "Capitol Hill", 35.4272461,-97.5225998],
-			["No", "Lamar", 29.7404892,-95.4262428],
-			["No", "Port Townsend", 48.1180708,-122.7689847],
-			["No", "Cooperstown", 42.688196,-74.9324318],
-			["No", "Sanford", 43.4534602,-70.7851793],
-			["No", "Colusa", 39.2000246,-122.0206425],
-			["No", "Wiscasset Middle High School", 44.0230394,-69.6721809],
-			["No", "Red Lodge", 45.1954031,-109.2409016],
-			["No", "Cardinal Gibbons", 26.1850161,-80.1093674],
-			["No", "Marshall", 42.2859172,-84.9583225],
-			["No", "Huntley", 42.1620476,-88.4646552],
-			["No", "Edmondson-Westside", 42.1620476,-88.4646552],
-			["No", "Milford", 42.6178397,-83.6230178],
-			["No", "Glenwood", 39.6897372,-89.6895948],
-			["No", "Hiawatha", 39.8522389,-95.5232578],
-			["No", "Scarborough", 43.5917183,-70.3366446],
-			["No", "Parsippany", 40.8694093,-74.3924776],
-			["No", "Saranac Lake", 44.3278122,-74.1442009],
-			["No", "James S. Rickards", 30.4079234,-84.2627146],
-			["No", "Frontier Regional", 42.4834733,-72.6057788],
-			["No", "Canajoharie", 42.8961306,-74.5612614],
-			["No", "Iowa Falls-Alden", 42.5349902,-93.2733332],
-			["No", "Mountain Empire", 32.7340841,-116.4930234],
-			["No", "Marist", 41.6847511,-87.7236223],
-			["No", "Seneca", 38.207783,-85.6552182],
-			["No", "North River", 46.7759963,-123.4848094],
-			["No", "Goffstown", 43.0125999,-71.582831],
-			["No", "Arvada", 39.8158109,-105.0846336],
-			["No", "Naperville Central", 41.7677314,-88.155765],
-			["No", "Grand Forks", 47.9255016,-97.0351188],
-			["No", "Idaho School for the Deaf and the Blind", 42.9296602,-114.7119574],
-			["No", "Oak Park", 42.4652533,-83.184143],
-			];
+		var planes = [                                                      
+      ["Yes", "Alabama School for the Blind", 33.433414, -86.089672, "aidb.jpg"],
+      ["Yes", "Oneonta", 33.933531, -86.497233, "oneonta.gif"],
+      ["Yes", "Red Mesa", 36.962363, -109.380999, "RMLOGO.gif"],
+      ["Yes", "St. Johns", 34.501881, -109.388828, "stjohns.png"],
+      ["Yes", "Pocahontas", 36.280372, -90.982045, "pocahontas.png"],
+      ["Yes", "La Veta", 37.504921, -105.008155, "laveta.svg"],
+      ["Yes", "Bryan County", 32.148889, -81.609395, "bryan.gif"],
+      ["Yes", "Social Circle", 33.659150, -83.729739, "social.JPG"],
+      ["Yes", "Teton", 43.731241, -111.099449, "teton.jpg"],
+      ["Yes", "Momence", 41.162833, -87.671202, "momence.gif"],
+      ["Yes", "Morris", 41.365001, -88.433708, "morris.gif"],
+      ["Yes", "Nokomis", 39.304606, -89.295091, "nokomis.gif"],
+      ["Yes", "Shawnee", 37.487593, -89.424646, "shawnee.gif"],
+      ["Yes", "Sullivan", 39.606130, -88.608218, "sullivan.gif"],
+      ["Yes", "Emmerich Manual", 39.733490, -86.152527, "emmerich.png"],
+      ["Yes", "Knox Community", 41.285392, -86.626422, "knox.jpg"],
+      ["Yes", "Liberal", 37.041416, -100.943536, "liberal.gif"],
+      ["Yes", "Little River", 38.398780, -98.016033, "littleriver.gif"],
+      ["Yes", "North", 37.709429, -97.344919, "north.jpg"],
+      ["?", "Cumberland", 36.971590, -82.995066, ""],
+      ["Yes", "Ringgold", 32.323372, -93.268080, "ringgold.gif"],
+      ["Yes", "Camden-Frontier", 41.780811, -84.706443, "camdenfrontier.gif"],
+      ["Yes", "Clinton", 42.073955, -83.963072, "clinton.gif"],
+      ["Yes", "Paw Paw", 42.220546, -85.850442, "pawpaw.gif"],
+      ["Yes", "Sandusky", 43.4129323,-82.8231361, "sandusky.gif"],
+      ["Yes", "Saranac", 42.927182,-85.2044784, "saranac.gif"],
+      ["Yes", "Canisteo-Greenwood", 42.2655849,-77.6099265, "canisteo.png"],
+      ["Yes", "Oriskany", 43.1620175,-75.3401622, "oriskany.jpg"],
+      ["Yes", "Manteo", 35.9162487,-75.67408, "manteo.jpeg"],
+      ["No", "Roanoke", 35.856241,-77.243872, ""],
+      ["Yes", "Anderson", 39.0696172,-84.3489941, "anderson.jpeg"],
+      ["Yes", "Arcadia", 41.1069639,-83.5156631, "arcadia.gif"],
+      ["Yes", "Caldwell", 39.7508653,-81.5180354, "caldwell.gif"],
+      ["Yes", "Coshocton", 40.2582311,-81.8459098, "coshocton.png"],
+      ["Yes", "Cuyahoga Heights", 41.4272786,-81.6429953, ""],
+      ["Yes", "Fort Loramie", 40.3444853,-84.3631185, "fortlaramie.gif"],
+      ["Yes", "Indian Creek", 40.3768448,-80.7155146, "indiancreek.gif"],
+      ["?", "Ledgemont", 41.6906982,-81.0470352, ""],
+      ["Yes", "Port Clinton", 41.5034856,-82.938036, "portclinton.gif"],
+      ["Yes", "St. Henry", 40.4163863,-84.6350239, "sthenry.gif"],
+      ["Yes", "Utica", 40.2375267,-82.4468565, "utica.gif"],
+      ["Yes", "Wapakoneta", 40.583254,-84.1947976, "wapakoneta.gif"],
+      ["Yes", "Kingston", 34.0015516,-96.7143181, "kingston.png"],
+      ["Yes", "McLoud", 35.4251207,-97.1012958, "mcloud.gif"],
+      ["Yes", "Rush Springs", 34.7830641,-97.9626793, "rushsprings.jpg"],
+      ["Yes", "Union", 36.066442,-95.8704596, "union.gif"],
+      ["Yes", "Neshaminy", 40.1576835,-74.9486352, "neshaminy.png"],
+      ["Yes", "Sayre Area", 41.9819287,-76.5233722, "sayre.jpg"],
+      ["Yes", "Loudon", 35.7266094,-84.3508921, "loudon.gif"],
+      ["Yes", "Donna", 26.1718939,-98.0366318, "donna.png"],
+      ["Yes", "Wellpinit", 47.899058,-117.9883683, "wellpinit.png"],
+      ["Yes", "Hurricane", 38.4377203,-82.0059362, "hurricane.png"],
+      ["No", "Belding", 43.0910763,-85.2213616, ""],
+      ["No", "Calaveras", 38.19976,-120.684689, ""],
+      ["No", "Chowchilla", 37.1160065,-120.262662, ""],
+      ["No", "Gustine", 37.2609635,-121.0009993, ""],
+      ["No", "Tulare Union", 36.2084311,-119.3389192, ""],
+      ["No", "Conrad Schools of Science", 39.7228894,-75.601351, ""],
+      ["No", "Goshen", 41.580479, -85.823435, ""],
+      ["No", "North Side", 41.0976711,-85.1352581, ""],
+      ["No", "Lancaster", 42.9299409,-78.6709603, ""],
+      ["No", "Capitol Hill", 35.4272461,-97.5225998, ""],
+      ["No", "Lamar", 29.7404892,-95.4262428, ""],
+      ["No", "Port Townsend", 48.1180708,-122.7689847, ""],
+      ["No", "Cooperstown", 42.688196,-74.9324318, ""],
+      ["No", "Sanford", 43.4534602,-70.7851793, ""],
+      ["No", "Colusa", 39.2000246,-122.0206425, ""],
+      ["No", "Wiscasset Middle High School", 44.0230394,-69.6721809, ""],
+      ["No", "Red Lodge", 45.1954031,-109.2409016, ""],
+      ["No", "Cardinal Gibbons", 26.1850161,-80.1093674, ""],
+      ["No", "Marshall", 42.2859172,-84.9583225, ""],
+      ["No", "Huntley", 42.1620476,-88.4646552, ""],
+      ["No", "Edmondson-Westside", 39.291437, -76.687976, ""],
+      ["No", "Milford", 42.6178397,-83.6230178, ""],
+      ["No", "Glenwood", 39.6897372,-89.6895948, ""],
+      ["No", "Hiawatha", 39.8522389,-95.5232578, ""],
+      ["No", "Scarborough", 43.5917183,-70.3366446, ""],
+      ["No", "Parsippany", 40.8694093,-74.3924776, ""],
+      ["No", "Saranac Lake", 44.3278122,-74.1442009, ""],
+      ["No", "James S. Rickards", 30.4079234,-84.2627146, ""],
+      ["No", "Frontier Regional", 42.4834733,-72.6057788, ""],
+      ["No", "Canajoharie", 42.8961306,-74.5612614, ""],
+      ["No", "Iowa Falls-Alden", 42.5349902,-93.2733332, ""],
+      ["No", "Mountain Empire", 32.7340841,-116.4930234, ""],
+      ["No", "Marist", 41.6847511,-87.7236223, ""],
+      ["No", "Seneca", 38.207783,-85.6552182, ""],
+      ["No", "North River", 46.7759963,-123.4848094, ""],
+      ["No", "Goffstown", 43.0125999,-71.582831, ""],
+      ["No", "Arvada", 39.8158109,-105.0846336, ""],
+      ["No", "Naperville Central", 41.7677314,-88.155765, ""],
+      ["No", "Grand Forks", 47.9255016,-97.0351188, ""],
+      ["No", "Idaho School for the Deaf and the Blind", 42.9296602,-114.7119574, ""],
+      ["No", "Oak Park", 42.4652533,-83.184143, ""]
+      ];
 
 		var blackIcon = new L.Icon({
 		  iconUrl: 'css/images/marker-icon-black.png',
-		  iconSize: [16.5, 27],
-		  iconAnchor: [8, 41],
-		  popupAnchor: [1, -34],
-		  shadowSize: [41, 41]
+		  iconSize: [9, 13.5],
+	      iconAnchor: [4.5, 13.5],
+	      popupAnchor: [0, -13.5]
 		});
 
 		var yellowIcon = new L.Icon({
 		  iconUrl: 'css/images/marker-icon-yellow.png',
-		  iconSize: [16.5, 27],
-		  iconAnchor: [8, 41],
-		  popupAnchor: [1, -34],
-		  shadowSize: [41, 41]
+		  iconSize: [9, 13.5],
+	      iconAnchor: [4.5, 13.5],
+	      popupAnchor: [0, -13.5]
 		});
+
+		var greyIcon = new L.Icon({
+	      iconUrl: 'css/images/marker-icon-grey.png',
+	      iconSize: [9, 13.5],
+	      iconAnchor: [4.5, 13.5],
+	      popupAnchor: [0, -13.5]
+	    });
 
 		var yes = [];
 		var no = [];
+		var maybe = [];
 
 		for (var i = 0; i < planes.length; i++) {
 			if (planes[i][0] === "Yes"){
-				marker = new L.marker([planes[i][2],planes[i][3]],{icon: yellowIcon})
-				.bindPopup(planes[i][1]);
-				yes.push(marker);
-			}else {
-				marker = new L.marker([planes[i][2],planes[i][3]],{icon: blackIcon})
-				.bindPopup(planes[i][1]);
-				no.push(marker);
-			}
+		        marker = new L.marker([planes[i][2],planes[i][3]],{icon: yellowIcon}).bindPopup(planes[i][1]);
+		        yes.push(marker);
+		      }else if (planes[i][0] === "No"){
+		        marker = new L.marker([planes[i][2],planes[i][3]],{icon: blackIcon}).bindPopup(planes[i][1]);
+		        no.push(marker);
+		      }else{
+		        marker = new L.marker([planes[i][2],planes[i][3]],{icon: greyIcon}).bindPopup(planes[i][1]);
+		        maybe.push(marker);
+		      }
 		}
+
+		// for (var i = 0; i < planes.length; i++) {
+	    //   if (planes[i][0] === "Yes"){
+	    //     marker = new L.CircleMarker([planes[i][2], planes[i][3]], {
+	    //       color: 'black',
+	    //       fillColor: '#000000',
+	    //       fillOpacity: 1.0,
+	    //       radius: 4,
+	    //       weight: 2
+	    //     }).bindPopup(planes[i][1]);
+	    //     yes.push(marker);
+	    //   }else if (planes[i][0] === "No"){
+	    //     marker = new L.CircleMarker([planes[i][2], planes[i][3]], {
+	    //       color: '#CCC62C',
+	    //       fillColor: '#CCC62C',
+	    //       fillOpacity: 1.0,
+	    //       radius: 4,
+	    //       weight: 2
+	    //     }).bindPopup(planes[i][1]);
+	    //     no.push(marker);
+	    //   }else{
+	    //     marker = new L.CircleMarker([planes[i][2], planes[i][3]], {
+	    //       color: '#707070',
+	    //       fillColor: '#707070',
+	    //       fillOpacity: 1.0,
+	    //       radius: 4,
+	    //       weight: 2
+	    //     }).bindPopup(planes[i][1]);
+	    //     maybe.push(marker);
+	    //   }
+	    // }
 
 		var yesSchools = L.layerGroup(yes);
 		var noSchools = L.layerGroup(no);
+		var closedSchools = L.layerGroup(maybe);
+
+		 // var track = new L.KML("cb_2016_us_aiannh_500k.kml", {async: true});
+	    //   track.on("loaded", function(e) {
+	    //   mymap.fitBounds(e.target.getBounds());
+	    // });
 
 		var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -166,7 +213,7 @@
 		var mymap = L.map('mapid', {
 			center: [39.50, -98.35],
 			zoom: 4,
-			layers: [streets, yesSchools, noSchools]
+			layers: [streets, yesSchools, noSchools, closedSchools]
 		});
 
 		var baseMaps = {
@@ -174,7 +221,8 @@
 
 		var overlayMaps = {
 		    "Kept Name": yesSchools,
-		    "Changed Name": noSchools
+		    "Changed Name": noSchools,
+		    "Used Name at Time of Closing": closedSchools
 		};
 
 	    L.control.layers(baseMaps, overlayMaps).addTo(mymap);
@@ -190,12 +238,17 @@
 					'<i style="background:' + "#CCC62C" + '"></i>' + " Kept Name");
 				labels.push(
 					'<i style="background:' + "#000000" + '"></i>' + " Changed Name");
+				labels.push(
+          			'<i style="background:' + "#707070" + '"></i>' + " Used Name at Time of Closing");
+
 
 			div.innerHTML = labels.join('<br>');
 			return div;
 		};
 
 		legend.addTo(mymap);
+
+
 
  	 </script>
   </body>
