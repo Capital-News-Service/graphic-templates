@@ -1,4 +1,6 @@
-<!-- Template by Jake Gluck - Capital New Service -->
+<!-- Jake Gluck - Capital New Service -->
+
+<!-- Used this code as a reference for resizing markers http://jsfiddle.net/paulovieira/vNLaP/ -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +8,7 @@
     <meta charset="utf-8">
 
     <title>
-    	Capital News Service Leaflet Graphic Template
+      Capital News Service Leaflet Graphic Template
     </title>
 
     <!-- Load leaflet.css -->
@@ -16,179 +18,317 @@
     <script src="js/leaflet.js"></script>
     <script src="js/leaflet-src.js"></script>
 
-	<!-- Load our css -->
-	<link href="css/css.css" rel="stylesheet">
+    <!-- Load our css -->
+    <link href="css/css.css" rel="stylesheet">
 
-	<!-- Load kml lib 
-  	<script src="js/kml.js"></script>-->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
   </head>
 
   <body>
-   	<div id="mapid">
-   	</div>
-   	<script type="text/javascript">
+    <div id="mapid">
+    </div>
+    <script type="text/javascript">
 
-		var planes = [                                                      
-      ["Yes", "Alabama School for the Blind", 33.433414, -86.089672, "aidb.jpg"],
-      ["Yes", "Oneonta", 33.933531, -86.497233, "oneonta.gif"],
-      ["Yes", "Red Mesa", 36.962363, -109.380999, "RMLOGO.gif"],
-      ["Yes", "St. Johns", 34.501881, -109.388828, "stjohns.png"],
-      ["Yes", "Pocahontas", 36.280372, -90.982045, "pocahontas.png"],
-      ["Yes", "La Veta", 37.504921, -105.008155, "laveta.svg"],
-      ["Yes", "Bryan County", 32.148889, -81.609395, "bryan.gif"],
-      ["Yes", "Social Circle", 33.659150, -83.729739, "social.JPG"],
-      ["Yes", "Teton", 43.731241, -111.099449, "teton.jpg"],
-      ["Yes", "Momence", 41.162833, -87.671202, "momence.gif"],
-      ["Yes", "Morris", 41.365001, -88.433708, "morris.gif"],
-      ["Yes", "Nokomis", 39.304606, -89.295091, "nokomis.gif"],
-      ["Yes", "Shawnee", 37.487593, -89.424646, "shawnee.gif"],
-      ["Yes", "Sullivan", 39.606130, -88.608218, "sullivan.gif"],
-      ["Yes", "Emmerich Manual", 39.733490, -86.152527, "emmerich.png"],
-      ["Yes", "Knox Community", 41.285392, -86.626422, "knox.jpg"],
-      ["Yes", "Liberal", 37.041416, -100.943536, "liberal.gif"],
-      ["Yes", "Little River", 38.398780, -98.016033, "littleriver.gif"],
-      ["Yes", "North", 37.709429, -97.344919, "north.jpg"],
-      //["?", "Cumberland", 36.971590, -82.995066, "north.jpg"],
-      ["Yes", "Ringgold", 32.323372, -93.268080, "ringgold.gif"],
-      ["Yes", "Camden-Frontier", 41.780811, -84.706443, "camdenfrontier.gif"],
-      ["Yes", "Clinton", 42.073955, -83.963072, "clinton.gif"],
-      ["Yes", "Paw Paw", 42.220546, -85.850442, "pawpaw.gif"],
-      ["Yes", "Sandusky", 43.4129323,-82.8231361, "sandusky.gif"],
-      ["Yes", "Saranac", 42.927182,-85.2044784, "saranac.gif"],
-      ["Yes", "Canisteo-Greenwood", 42.2655849,-77.6099265, "canisteo.png"],
-      ["Yes", "Oriskany", 43.1620175,-75.3401622, "oriskany.jpg"],
-      ["Yes", "Manteo", 35.9162487,-75.67408, "manteo.jpeg"],
-      ["No", "Roanoke", 35.856241,-77.243872, "northside.png"],
-      ["Yes", "Anderson", 39.0696172,-84.3489941, "anderson.jpeg"],
-      ["Yes", "Arcadia", 41.1069639,-83.5156631, "arcadia.gif"],
-      ["Yes", "Caldwell", 39.7508653,-81.5180354, "caldwell.gif"],
-      ["Yes", "Coshocton", 40.2582311,-81.8459098, "coshocton.png"],
-      ["Yes", "Cuyahoga Heights", 41.4272786,-81.6429953, "fortlaramie.gif"],
-      ["Yes", "Fort Loramie", 40.3444853,-84.3631185, "fortlaramie.gif"],
-      ["Yes", "Indian Creek", 40.3768448,-80.7155146, "indiancreek.gif"],
-      //["?", "Ledgemont", 41.6906982,-81.0470352, "goffstown.gif"],
-      ["Yes", "Port Clinton", 41.5034856,-82.938036, "portclinton.gif"],
-      ["Yes", "St. Henry", 40.4163863,-84.6350239, "sthenry.gif"],
-      ["Yes", "Utica", 40.2375267,-82.4468565, "utica.gif"],
-      ["Yes", "Wapakoneta", 40.583254,-84.1947976, "wapakoneta.gif"],
-      ["Yes", "Kingston", 34.0015516,-96.7143181, "kingston.png"],
-      ["Yes", "McLoud", 35.4251207,-97.1012958, "mcloud.gif"],
-      ["Yes", "Rush Springs", 34.7830641,-97.9626793, "rushsprings.jpg"],
-      ["Yes", "Union", 36.066442,-95.8704596, "union.gif"],
-      ["Yes", "Neshaminy", 40.1576835,-74.9486352, "neshaminy.png"],
-      ["Yes", "Sayre Area", 41.9819287,-76.5233722, "sayre.jpg"],
-      ["Yes", "Loudon", 35.7266094,-84.3508921, "loudon.gif"],
-      ["Yes", "Donna", 26.1718939,-98.0366318, "donna.png"],
-      ["Yes", "Wellpinit", 47.899058,-117.9883683, "wellpinit.png"],
-      ["Yes", "Hurricane", 38.4377203,-82.0059362, "hurricane.png"],
-      ["No", "Belding", 43.0910763,-85.2213616, "belding.png"],
-      ["No", "Calaveras", 38.19976,-120.684689, "calaveras.png"],
-      ["No", "Chowchilla", 37.1160065,-120.262662, "chowchilla.jpg"],
-      ["No", "Gustine", 37.2609635,-121.0009993, "gustine.jpg"],
-      ["No", "Tulare Union", 36.2084311,-119.3389192, "tulare.jpg"],
-      ["No", "Conrad Schools of Science", 39.7228894,-75.601351, "conrad.jpg"],
-      ["No", "Goshen", 41.580479, -85.823435, "northside.png"],
-      ["No", "North Side", 41.0976711,-85.1352581, "northside.png"],
-      ["No", "Lancaster", 42.9299409,-78.6709603, "lancaster.jpg"],
-      ["No", "Capitol Hill", 35.4272461,-97.5225998, "capitol.png"],
-      ["No", "Lamar", 29.7404892,-95.4262428, "lamar.png"],
-      ["No", "Port Townsend", 48.1180708,-122.7689847, "porttownsend.gif"],
-      ["No", "Cooperstown", 42.688196,-74.9324318, "cooperstown.jpg"],
-      ["No", "Sanford", 43.4534602,-70.7851793, "sanford.gif"],
-      ["No", "Colusa", 39.2000246,-122.0206425, "colusa.jpg"],
-      ["No", "Wiscasset Middle High School", 44.0230394,-69.6721809, "wiscasset.jpg"],
-      ["No", "Red Lodge", 45.1954031,-109.2409016, "redlodge.gif"],
-      ["No", "Cardinal Gibbons", 26.1850161,-80.1093674, "cardinal.jpeg"],
-      ["No", "Marshall", 42.2859172,-84.9583225, "marshall.png"],
-      ["No", "Huntley", 42.1620476,-88.4646552, "northside.png"],
-      ["No", "Edmondson-Westside", 39.291437, -76.687976, "edmondsonwestside.gif"],
-      ["No", "Milford", 42.6178397,-83.6230178, "northside.png"],
-      ["No", "Glenwood", 39.6897372,-89.6895948, "glenwood.gif"],
-      ["No", "Hiawatha", 39.8522389,-95.5232578, "hiawatha.png"],
-      ["No", "Scarborough", 43.5917183,-70.3366446, "scarborough.gif"],
-      ["No", "Parsippany", 40.8694093,-74.3924776, "parsippany.png"],
-      ["No", "Saranac Lake", 44.3278122,-74.1442009, "saranaclake.gif"],
-      ["No", "James S. Rickards", 30.4079234,-84.2627146, "rickards.gif"],
-      ["No", "Frontier Regional", 42.4834733,-72.6057788, "frontier.png"],
-      ["No", "Canajoharie", 42.8961306,-74.5612614, "canajoharie.gif"],
-      ["No", "Iowa Falls-Alden", 42.5349902,-93.2733332, "iowafalls.gif"],
-      ["No", "Mountain Empire", 32.7340841,-116.4930234, "mountainempire.png"],
-      ["No", "Marist", 41.6847511,-87.7236223, "marist.jpg"],
-      ["No", "Seneca", 38.207783,-85.6552182, "seneca.gif"],
-      ["No", "North River", 46.7759963,-123.4848094, "northriver.gif"],
-      ["No", "Goffstown", 43.0125999,-71.582831, "goffstown.gif"],
-      ["No", "Arvada", 39.8158109,-105.0846336, "arvada.gif"],
-      ["No", "Naperville Central", 41.7677314,-88.155765, "naperville.gif"],
-      ["No", "Grand Forks", 47.9255016,-97.0351188, "grandforks.gif"],
-      ["No", "Idaho School for the Deaf and the Blind", 42.9296602,-114.7119574, "iesdb.gif"],
-      ["No", "Oak Park", 42.4652533,-83.184143, "oakpark.gif"]
+    var openPopup;
+
+  
+
+    var planes = [                                                      
+      ["Yes", "Alabama School for the Blind", 33.433414, -86.089672, "aidb.jpg", "http://aidb.org/alabama-school-for-the-blind/"],
+      ["Yes", "Oneonta", 33.933531, -86.497233, "oneonta.gif", "http://oneonta.ocs.schoolinsites.com/?PageName=%27Sports%27"],
+      ["Yes", "Red Mesa", 36.962363, -109.380999, "RMLOGO.gif", "http://www.rmusd.net/"],
+      ["Yes", "St. Johns", 34.501881, -109.388828, "stjohns.png", "http://www.sjredskins.net/Home"],
+      ["Yes", "Pocahontas", 36.280372, -90.982045, "pocahontas.png", "https://www.pocahontaspsd.com/o/phs"],
+      ["Yes", "La Veta", 37.504921, -105.008155, "laveta.svg", "https://lvk12.org/"],
+      ["Yes", "Bryan County", 32.148889, -81.609395, "bryan.gif", "http://www.bryan.k12.ga.us/o/bchs"],
+      ["Yes", "Social Circle", 33.659150, -83.729739, "social.JPG", "http://www.socialcircleschools.com/athletics"],
+      ["Yes", "Teton", 43.731241, -111.099449, "teton.jpg", "http://www.tetonhighschool.com/"],
+      ["Yes", "Momence", 41.162833, -87.671202, "momence.gif", "http://momence.k12.il.us/schools/high-school/"],
+      ["Yes", "Morris", 41.365001, -88.433708, "morris.gif", "https://www.morrishs.org/"],
+      ["Yes", "Nokomis", 39.304606, -89.295091, "nokomis.gif", "http://www.nokomis.k12.il.us/index.php/high-school"],
+      ["Yes", "Shawnee", 37.487593, -89.424646, "shawnee.gif", "https://sites.google.com/a/shawneedistrict84.com/shawnee-district-page/"],
+      ["Yes", "Sullivan", 39.606130, -88.608218, "sullivan.gif", "https://www.sullivan.k12.il.us/"],
+      ["Yes", "Emmerich Manual", 39.733490, -86.152527, "emmerich.png", "http://www.emmerichmanualhs.org/"],
+      ["Yes", "Knox Community", 41.285392, -86.626422, "knox.jpg", "http://hs.knox.k12.in.us/"],
+      ["Yes", "Liberal", 37.041416, -100.943536, "liberal.gif", "http://lhs.usd480.net/"],
+      ["Yes", "Little River", 38.398780, -98.016033, "littleriver.gif", "http://www.usd444.com/"],
+      ["Yes", "North", 37.709429, -97.344919, "north.jpg", "https://www.usd259.org/north"],
+      ["?", "Cumberland", 36.971590, -82.995066, "north.jpg", "School closed in 2009"],
+      ["Yes", "Ringgold", 32.323372, -93.268080, "ringgold.gif", "https://sites.google.com/a/bpsb.us/ringgold-high-school-2015-2016/home"],
+      ["Yes", "Camden-Frontier", 41.780811, -84.706443, "camdenfrontier.gif", "http://www.cfss.org/"],
+      ["Yes", "Clinton", 42.073955, -83.963072, "clinton.gif", "http://www.clinton.k12.mi.us/schools/high-school/"],
+      ["Yes", "Paw Paw", 42.220546, -85.850442, "pawpaw.gif", "https://www.ppps.org/"],
+      ["Yes", "Sandusky", 43.4129323,-82.8231361, "sandusky.gif", "http://www.sandusky.k12.mi.us/apps/pages/index.jsp?uREC_ID=858192&type=d&pREC_ID=1221513"],
+      ["Yes", "Saranac", 42.927182,-85.2044784, "saranac.gif", "http://www.saranac.k12.mi.us/jrsr-high/"],
+      ["Yes", "Canisteo-Greenwood", 42.2655849,-77.6099265, "canisteo.png", "http://c2.cg.schoolwires.net/Page/217"],
+      ["Yes", "Oriskany", 43.1620175,-75.3401622, "oriskany.jpg", "https://www.oriskanycsd.org/oriskanycsd"],
+      ["Yes", "Manteo", 35.9162487,-75.67408, "manteo.jpeg", "http://mhs.daretolearn.org/"],
+      ["?", "Roanoke", 35.856241,-77.243872, "northside.png", "School merged in 2010"],
+      ["Yes", "Anderson", 39.0696172,-84.3489941, "anderson.jpeg", "https://www.foresthills.edu/anderson/"],
+      ["Yes", "Arcadia", 41.1069639,-83.5156631, "arcadia.gif", "http://www.arcadia.noacsc.org/arcadiaHS_MS.aspx"],
+      ["Yes", "Caldwell", 39.7508653,-81.5180354, "caldwell.gif", "http://www.caldwell.k12.oh.us/"],
+      ["Yes", "Coshocton", 40.2582311,-81.8459098, "coshocton.png", "http://www.coshoctonredskins.com/coshoctonhighschool_home.aspx"],
+      ["Yes", "Cuyahoga Heights", 41.4272786,-81.6429953, "fortlaramie.gif", "http://www.cuyhts.k12.oh.us/default.aspx"],
+      ["Yes", "Fort Loramie", 40.3444853,-84.3631185, "fortlaramie.gif", "http://www.loramie.k12.oh.us/juniorseniorhighschool_home.aspx"],
+      ["Yes", "Indian Creek", 40.3768448,-80.7155146, "indiancreek.gif", "http://www.indian-creek.k12.oh.us/"],
+      ["?", "Ledgemont", 41.6906982,-81.0470352, "", "School closed in 2014"],
+      ["Yes", "Port Clinton", 41.5034856,-82.938036, "portclinton.gif", "http://hs.pccsd.net/"],
+      ["Yes", "St. Henry", 40.4163863,-84.6350239, "sthenry.gif", "http://www.sthenryschools.org/"],
+      ["Yes", "Utica", 40.2375267,-82.4468565, "utica.gif", "http://www.northfork.k12.oh.us/highschool_home.aspx"],
+      ["Yes", "Wapakoneta", 40.583254,-84.1947976, "wapakoneta.gif", "http://highschool.wapak.org/"],
+      ["Yes", "Kingston", 34.0015516,-96.7143181, "kingston.png", "http://www.kingston.k12.ok.us/page/543"],
+      ["Yes", "McLoud", 35.4251207,-97.1012958, "mcloud.gif", "http://www.mcloudschools.us/"],
+      ["Yes", "Rush Springs", 34.7830641,-97.9626793, "rushsprings.jpg", "http://www.rushsprings.k12.ok.us/page/694"],
+      ["Yes", "Union", 36.066442,-95.8704596, "union.gif", "http://www.unionps.org/athletics/"],
+      ["Yes", "Neshaminy", 40.1576835,-74.9486352, "neshaminy.png", "https://www.neshaminy.org/nhs"],
+      ["Yes", "Sayre Area", 41.9819287,-76.5233722, "sayre.jpg", "http://www.sayresd.org/high-school/"],
+      ["Yes", "Loudon", 35.7266094,-84.3508921, "loudon.gif", "http://lhs.loudoncounty.org/"],
+      ["Yes", "Donna", 26.1718939,-98.0366318, "donna.png", "http://dhs.donna.schooldesk.net/"],
+      ["Yes", "Wellpinit", 47.899058,-117.9883683, "wellpinit.png", "https://www.wellpinit.org/site/default.aspx?PageID=1"],
+      ["Yes", "Hurricane", 38.4377203,-82.0059362, "hurricane.png", "http://hhs.putnamschools.com/"],
+      ["No", "Belding", 43.0910763,-85.2213616, "belding.png", "http://www.bas-k12.org/"],
+      ["No", "Calaveras", 38.19976,-120.684689, "calaveras.png", "http://chs.custudents.net/"],
+      ["No", "Chowchilla", 37.1160065,-120.262662, "chowchilla.jpg", "http://www.chowchillahigh.k12.ca.us/"],
+      ["No", "Gustine", 37.2609635,-121.0009993, "gustine.jpg", "http://www.gustine.k12.ca.us/gustine-high-school.html"],
+      ["No", "Tulare Union", 36.2084311,-119.3389192, "tulare.jpg", "http://tuhs.tjuhsd.org/"],
+      ["No", "Conrad Schools of Science", 39.7228894,-75.601351, "conrad.jpg", "https://de01903704.schoolwires.net/conrad"],
+      ["No", "Goshen", 41.580479, -85.823435, "northside.png", "https://www.goshenschools.org/"],
+      ["No", "North Side", 41.0976711,-85.1352581, "northside.png", "http://www.parkviewsportsnetwork.com/north-side-legends/"],
+      ["No", "Lancaster", 42.9299409,-78.6709603, "lancaster.jpg", "http://lancasterschools.org/lancasterhs"],
+      ["No", "Capitol Hill", 35.4272461,-97.5225998, "capitol.png", "https://www.okcps.org/Domain/82"],
+      ["No", "Lamar", 29.7404892,-95.4262428, "lamar.png", "http://www.houstonisd.org/lamarhs"],
+      ["No", "Port Townsend", 48.1180708,-122.7689847, "porttownsend.gif", "http://highschool.ptschools.org/"],
+      ["No", "Cooperstown", 42.688196,-74.9324318, "cooperstown.jpg", "http://www.cooperstowncs.org/"],
+      ["No", "Sanford", 43.4534602,-70.7851793, "sanford.gif", "http://www.sanford.org/pages/Sanford_SD"],
+      ["No", "Colusa", 39.2000246,-122.0206425, "colusa.jpg", "http://www.colusahigh.org/"],
+      ["No", "Wiscasset Middle High School", 44.0230394,-69.6721809, "wiscasset.jpg", "https://sites.google.com/a/wiscassetschools.org/whs/"],
+      ["No", "Red Lodge", 45.1954031,-109.2409016, "redlodge.gif", "https://mt15000219.schoolwires.net/domain/36"],
+      ["No", "Cardinal Gibbons", 26.1850161,-80.1093674, "cardinal.jpeg", "http://www.cghsfl.org/athletics"],
+      ["No", "Marshall", 42.2859172,-84.9583225, "marshall.png", "http://www.marshall.k12.mi.us/marshallhighschool_home.aspx"],
+      ["No", "Huntley", 42.1620476,-88.4646552, "northside.png", "https://district158.learning.powerschool.com/gwilson/athletics/cms_page/view"],
+      ["No", "Edmondson-Westside", 39.291437, -76.687976, "edmondsonwestside.gif", "http://www.edmondson-westside.org/"],
+      ["No", "Milford", 42.6178397,-83.6230178, "northside.png", "http://www.hvs.org/schools/highschools/milford/"],
+      ["No", "Glenwood", 39.6897372,-89.6895948, "glenwood.gif", "http://glenwoodtitans.org/"],
+      ["No", "Hiawatha", 39.8522389,-95.5232578, "hiawatha.png", "http://www.hiawathaschools.org/vnews/display.v/SEC/High%20School%7CAthletics%3E%3ENews%20and%20Information"],
+      ["No", "Scarborough", 43.5917183,-70.3366446, "scarborough.gif", "https://sites.google.com/a/scarboroughschools.org/shs/"],
+      ["No", "Parsippany", 40.8694093,-74.3924776, "parsippany.png", "http://phs.pthsd.k12.nj.us/"],
+      ["No", "Saranac Lake", 44.3278122,-74.1442009, "saranaclake.gif", "http://highschool.slcs.org/"],
+      ["No", "James S. Rickards", 30.4079234,-84.2627146, "rickards.gif", "https://www.leonschools.net/domain/2018"],
+      ["No", "Frontier Regional", 42.4834733,-72.6057788, "frontier.png", "http://www.frsu38.org/frs"],
+      ["No", "Canajoharie", 42.8961306,-74.5612614, "canajoharie.gif", "http://www.canajoharieschools.org/high/hs_home.cfm"],
+      ["No", "Iowa Falls-Alden", 42.5349902,-93.2733332, "iowafalls.gif", "http://www.ifacadets.net/activity_list"],
+      ["No", "Mountain Empire", 32.7340841,-116.4930234, "mountainempire.png", "http://www.meusd.k12.ca.us/"],
+      ["No", "Marist", 41.6847511,-87.7236223, "marist.jpg", "http://www.marist.net/athletics/redhawk-athletics/"],
+      ["No", "Seneca", 38.207783,-85.6552182, "seneca.gif", "http://schools.jefferson.kyschools.us/high/Seneca/index.html#"],
+      ["No", "North River", 46.7759963,-123.4848094, "northriver.gif", "http://nr.k12.wa.us/"],
+      ["No", "Goffstown", 43.0125999,-71.582831, "goffstown.gif", "http://www.goffstown.k12.nh.us/index.php/schools/goffstown-high-school"],
+      ["No", "Arvada", 39.8158109,-105.0846336, "arvada.gif", "http://arvadahs.jeffcopublicschools.org/"],
+      ["No", "Naperville Central", 41.7677314,-88.155765, "naperville.gif", "http://il.8to18.com/napervillecentral"],
+      ["No", "Grand Forks", 47.9255016,-97.0351188, "grandforks.gif", "https://www.gfschools.org/gfc"],
+      ["No", "Idaho School for the Deaf and the Blind", 42.9296602,-114.7119574, "iesdb.gif", "http://www.iesdb.org/index.php/campus-splash"],
+      ["No", "Oak Park", 42.4652533,-83.184143, "oakpark.gif", "http://www.oakparkschools.org/schools/oakparkhigh"]
       ];
 
-		var yes = [];
-		var no = [];
+    var blackIcon = new L.Icon({
+        iconUrl: 'css/images/marker-icon-black.png',
+        iconSize: [9, 13.5],
+        iconAnchor: [4.5, 13.5],
+        popupAnchor: [0, -13.5],
 
-		for (var i = 0; i < planes.length; i++) {
+    });
+
+    var yellowIcon = new L.Icon({
+        iconUrl: 'css/images/marker-icon-yellow.png',
+        iconSize: [9, 13.5],
+        iconAnchor: [4.5, 13.5],
+        popupAnchor: [0, -13.5]
+    });
+
+    var greyIcon = new L.Icon({
+        iconUrl: 'css/images/marker-icon-grey.png',
+        iconSize: [9, 13.5],
+        iconAnchor: [4.5, 13.5],
+        popupAnchor: [0, -13.5]
+      });
+
+    var yes = [];
+    var no = [];
+    var maybe = [];
+
+    for (var i = 0; i < planes.length; i++) {
       if (planes[i][0] === "Yes"){
-        var picIcon = new L.Icon({
-        iconUrl: 'img/redskins/' + planes[i][4],
-        iconSize: [18, 27],
-        iconAnchor: [9, 27],
-        popupAnchor: [0, -27]
-      });
-      marker = new L.marker([planes[i][2],planes[i][3]],{icon: picIcon}).bindPopup(planes[i][1]);
-      yes.push(marker);
-    } else if (planes[i][0] === "No"){
-      var picIcon = new L.Icon({
-        iconUrl: 'img/other/' + planes[i][4],
-        iconSize: [18, 27],
-        iconAnchor: [9, 27],
-        popupAnchor: [0, -27]
-      });
-      marker = new L.marker([planes[i][2],planes[i][3]],{icon: picIcon}).bindPopup(planes[i][1]);
-      no.push(marker);
+            marker = new L.marker([planes[i][2],planes[i][3]],{icon: yellowIcon}).bindPopup("<p style=\"text-align:center\">" + "<a href=\"" + planes[i][5] + "\">" + planes[i][1] + "</a>" + "</p>");
+            yes.push(marker);
+          }else if (planes[i][0] === "No"){
+            marker = new L.marker([planes[i][2],planes[i][3]],{icon: blackIcon}).bindPopup("<p style=\"text-align:center\">" + "<a href=\"" + planes[i][5] + "\">" + planes[i][1] + "</a>" + "</p>");
+            no.push(marker);
+          }else{
+            marker = new L.marker([planes[i][2],planes[i][3]],{icon: greyIcon}).bindPopup("<p style=\"text-align:center\">" + planes[i][1] + "<br>" + planes[i][5] + "</p>");
+            maybe.push(marker);
+          }
     }
-     
-		}
-
-	
-
-		var yesSchools = L.layerGroup(yes);
-		var noSchools = L.layerGroup(no);
-
-		var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-		mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFnbHVjayIsImEiOiJjamFqeHNrdnQyZjFrMzNsZDBrcHM2dzd3In0.84EdvBJ5XlBpintC80Jlow';
-
-		var streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
-
-		var mymap = L.map('mapid', {
-			center: [39.50, -98.35],
-			zoom: 4,
-			layers: [streets, yesSchools, noSchools]
-		});
-
-		var baseMaps = {
-		};
-
-		var overlayMaps = {
-		    "Kept Name": yesSchools,
-		    "Changed Name": noSchools,
-		};
-
-	    L.control.layers(baseMaps, overlayMaps).addTo(mymap);
-
-		
 
 
+    var yesSchools = L.layerGroup(yes);
+    var noSchools = L.layerGroup(no);
+    var closedSchools = L.layerGroup(maybe);
+
+    var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+      '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFnbHVjayIsImEiOiJjamFqeHNrdnQyZjFrMzNsZDBrcHM2dzd3In0.84EdvBJ5XlBpintC80Jlow';
+
+    var streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+
+    var mymap = L.map('mapid', {
+      center: [39.50, -98.35],
+      zoom: 4,
+      layers: [streets, yesSchools, noSchools, closedSchools]
+    });
+
+    var baseMaps = {
+    };
+
+    var overlayMaps = {
+        "Kept Name": yesSchools,
+        "Changed Name": noSchools,
+        "Used Name at Time of Closing": closedSchools
+    };
+
+      L.control.layers(baseMaps, overlayMaps).addTo(mymap);
+
+      var legend = L.control({position: 'bottomright'});
+
+    legend.onAdd = function (map) {
+
+      var div = L.DomUtil.create('div', 'info legend'),
+        labels = [];
+
+        labels.push(
+          '<i style="background:' + "#CCC62C" + '"></i>' + " Kept Name");
+        labels.push(
+          '<i style="background:' + "#000000" + '"></i>' + " Changed Name");
+        labels.push(
+                '<i style="background:' + "#707070" + '"></i>' + " Used Name at Time of Closing");
 
 
- 	 </script>
+      div.innerHTML = labels.join('<br>');
+      return div;
+    };
+
+    legend.addTo(mymap);
+
+    //tracks marker with popup
+    mymap.on('popupopen', function (e) {
+      openPopup = e.popup._source;
+    });
+
+    //tracks marker with popup
+    mymap.on('popupclose', function (e) {
+      openPopup = undefined;
+    });
+
+    //this changes marker size when zoom changes
+    mymap.on('zoomend', function() {
+
+      //console.log(mymap.getZoom());
+      mymap.eachLayer(function (layer) {
+          if(layer instanceof L.Marker){
+              changeIconSize(layer);
+          }
+      });
+  });
+
+    //this makes sure objects are rights size when reloaded
+    mymap.on('overlayadd', function() {
+
+      console.log("reset");
+      mymap.eachLayer(function (layer) {
+          if(layer instanceof L.Marker){
+              changeIconSize(layer);
+          }
+      });
+  });
+
+    //resize one marker
+    function changeIconSize(myMarker) {
+
+      // this is the default size (of the default icon); it should be known beforehand;
+      var defaultIconSize = new L.Point(9, 13.5);
+      var defaultIconAnchor = new L.Point(4.5, 13.5);
+      var defaultPopupAnchor = new L.Point(0, -13.5);
+
+      // use leaflet's internal methods to scale the size (a bit overkill for this case...)
+      var transformation = new L.Transformation(1, 0, 1, 0);
+
+      var currentZoom = mymap.getZoom();
+      var newIconSize = transformation.transform(defaultIconSize, sizeFactor(currentZoom));
+      var newpopupAnchor = transformation.transform(defaultPopupAnchor, sizeFactor(currentZoom));
+
+      // adjust the icon anchor to the new size
+      var newIconAnchor = new L.Point(Math.round(newIconSize.x / 2), newIconSize.y);
+
+      // finally, declare a new icon and update the marker
+      iconUrl = myMarker._icon.src;
+      if (iconUrl === "http://localhost/redskins/css/images/marker-icon-grey.png"){
+           var newIcon = new L.Icon({
+              iconUrl: 'css/images/marker-icon-grey.png',
+              iconSize: newIconSize,
+              iconAnchor: newIconAnchor,
+              popupAnchor: newpopupAnchor
+          });
+            myMarker.setIcon(newIcon);
+      } else if (iconUrl === "http://localhost/redskins/css/images/marker-icon-black.png"){
+          var newIcon = new L.Icon({
+              iconUrl: 'css/images/marker-icon-black.png',
+              iconSize: newIconSize,
+              iconAnchor: newIconAnchor,
+              popupAnchor: newpopupAnchor
+          });
+           myMarker.setIcon(newIcon);
+      }else if (iconUrl === "http://localhost/redskins/css/images/marker-icon-yellow.png"){
+          var newIcon = new L.Icon({
+              iconUrl: 'css/images/marker-icon-yellow.png',
+              iconSize: newIconSize,
+              iconAnchor: newIconAnchor,
+              popupAnchor: newpopupAnchor
+          });
+      }
+
+      //if this marker has open popup close it and reopen it to resize it
+      if(typeof openPopup === "undefined") {
+         myMarker.setIcon(newIcon);
+      }else if (myMarker._leaflet_id == openPopup._leaflet_id){
+          mymap.closePopup();
+          myMarker.setIcon(newIcon);
+          myMarker.openPopup();
+      }else{
+          myMarker.setIcon(newIcon);
+      }
+
+    }
+
+    //size for each level
+    function sizeFactor(zoom) {
+      if (zoom <= 4) return 1;
+      else if (zoom == 5) return 1.5;
+      else if (zoom == 6) return 2.0;
+      else if (zoom == 7) return 2.5;
+      else if (zoom == 8) return 3;
+      else if (zoom == 9) return 3.5;
+      else if (zoom == 10) return 4;
+      else if (zoom == 11) return 4.5;
+      else if (zoom == 12) return 5;
+      else if (zoom == 13) return 5.5;
+      else if (zoom == 14) return 6;
+      else if (zoom == 15) return 6.5;
+      else if (zoom == 16) return 7;
+      else 
+      return 7;
+    }
+
+   </script>
   </body>
  
 </html>
-
-
-
-
