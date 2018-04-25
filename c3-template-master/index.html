@@ -30,7 +30,8 @@
    			<!-- ^^ PUT YOUR NAME HERE, TAKE CREDIT FOR YOUR COOL WORK ^^ -->
    			<tspan onclick="location.href=&quot;http://cnsmaryland.org&quot;"> | CAPITAL NEWS SERVICE</tspan>
    			<br>
-   			<span style="height:8px; font-size:8pt; background-color:#fbd603 ; color:#fbd603 ;">_______________________________________________</span>
+   			<div id="line"></div>
+   			<!--<span style="height:8px; font-size:8pt; background-color:#fbd603 ; color:#fbd603 ;">_______________________________________________</span>-->
    		</text>
    		<div id="chart"></div>
    		<div id="source"><text><a href="http://cnsmaryland.org/home"><tspan>Source: Capital News Service</tspan></a></text></div>
@@ -40,7 +41,7 @@
 
 		//	THE DOCUMENTATION FOR C3 IS HERE http://c3js.org/reference.html
 		//	USE IT TO LOOK UP ANY ADDITIONAL OPTIONS YOU WOULD LIKE TO ADD
-		//  SOME HELPFULL FEATURES INCLUDE REGIONS, HIGHLIGHTING SPECIFIC POINTS, GRID LINES, SHOWING MULTIPLE CHARTS AT THE SAME TIME 
+		//  SOME HELPFUL FEATURES INCLUDE REGIONS, HIGHLIGHTING SPECIFIC POINTS, GRID LINES, SHOWING MULTIPLE CHARTS AT THE SAME TIME 
 		x = ['x', 2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017];
 		//	^^ ENTER YOUR X-AXIS LABELS HERE ^^
 				category1 = ['Category 1', 298,215,251,170,187,298,324,424,534,903,847];
@@ -48,8 +49,17 @@
 				category2 = ['Category 2', 17,17,23,31,22,23,22,141,192,751,1173];
 		//	^^ ENTER YOUR DATA HERE, THE FIRST VALUE IS A STRING THAT IS THE NAME OF YOUR CATEGORY ^^
 		var chart = c3.generate({
+			padding: {
+				bottom: 20
+				//THIS VALUE ADJUSTS THE SPACING AT THE BOTTOM OF THE CHART IF YOU NEED MORE ROOM FOR X-AXIS LABELS
+			},
 		    data: {
 		    	x: 'x',
+		    	colors: {
+		    		'Category 1':'#fbd603',
+		    		'Category 2':'#000000'
+		    		//SET COLORS FOR EACH CATEGORY
+		    	},
 		        columns: [
 		        	x,
 		            category1,
@@ -59,6 +69,10 @@
 	
 		        type: 'bar'
 		        //	^^ INSERT CHART TYPE ABOVE. FOR THE PURPOSES OF THIS TEMPLATE, USE BAR, AREA, SCATTER, LINE OR SPLINE ^^
+		    },
+		    legend: {
+		    	position: 'inset'
+		    	//LEGEND POSITION VALUES INCLUDE 'bottom', 'right', and 'inset'
 		    },
 		    bar: {
 		        width: {
@@ -85,6 +99,12 @@
     				// SET MIN AND MAX TICK ON Y AXIS ^^^^^^^
 		    	},
 		    	x :{
+		    		tick: {
+		    			culling: false,
+		    			//SET CULLING TO true IF YOU DO NOT WANT EACH X-TICK LABEL DISPLAYED
+		    			rotate: -45
+		    			//SET TO 0 IF YOU WANT THE X-TICK LABELS TO BE STRAIGHT
+		    		},
 		    		label: {
     					//text: 'X Axis Label',
     					position: 'outer-right'
