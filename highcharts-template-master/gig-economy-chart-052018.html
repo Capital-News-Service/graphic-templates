@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>
+			Capital News Service HighCharts Graphic Template, Version 2
+</title>
+
+<!--Log:
+	-Original 2/15/17
+	-Updated 2/17/17 to create new internal style method for highlighting single values and to insert necessary code for thousands separator and decimal point
+	-Updated 3/1/17 to remedy bug involving HTML-based byline construction, add to color capacity, eliminate legend navigation and add U.S. state-based maps capability.
+
+	Template by Evan Berkowitz/Capital News Service
+
+Begin necessary code here: -->
+
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Poppins:300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
+
+
+
+<style>
+
+.highcharts-title {
+	font-size:2.5em;
+}
+
+</style>
+
+
+
+<!-- ENABLE THE FOLLOWING TO HIGHLIGHT ONE DATA POINT. This color style would be best utilized for a graphic only highlighting, say, Maryland among a list of states. Uncomment it to activate, and ensure the feature being highlighted is the first series (series 0). To highlight more, simply delete sections of the internal style from the top (from period to closing bracket) for the number of highlighted items, and ensure they are the first group of series. This allows for 10 (including the highlighted feature(s)), but you can add more by copying and pasting a section of style and simply increasing the number by one each time.
+
+	<style>
+
+	.highcharts-color-1  {
+	fill:#808080;
+	stroke:#808080;
+}
+
+
+	.highcharts-color-2  {
+	fill:#808080;
+	stroke:#808080;
+}
+
+	.highcharts-color-3  {
+	fill:#808080;
+	stroke:#808080;
+		}
+
+	.highcharts-color-4  {
+	fill:#808080;
+	stroke:#808080;
+}
+	.highcharts-color-5  {
+	fill:#808080;
+	stroke:#808080;
+}
+
+		.highcharts-color-6  {
+	fill:#808080;
+	stroke:#808080;
+}
+
+		.highcharts-color-7  {
+	fill:#808080;
+	stroke:#808080;
+}
+
+		.highcharts-color-8  {
+	fill:#808080;
+	stroke:#808080;
+}
+
+		.highcharts-color-9  {
+	fill:#808080;
+	stroke:#808080;
+}
+	</style>
+	-->
+
+</head>
+<body>
+<script src="js/highcharts.js"></script>
+<div id="container" style="min-width: 310px; max-width: 600px; height: 600px; margin: 0 auto"></div>
+<script>
+	Highcharts.setOptions({
+   lang: {
+       decimalPoint: '.',
+       thousandsSep: ','
+   }
+});
+Highcharts.chart('container', {
+chart: {
+		type: 'bar',
+		marginLeft: 150
+
+},
+title: {
+		text: 'Comparision of Percentage Change in Jobs and Average Income between 2005 & 2015'
+},
+xAxis: {
+		categories: ['Residential Building Construction', 'Taxi & Limo', 'Specialized Design Services', 'Computer System Design', 'Advertising & Public Relations']
+},
+credits: {
+		enabled: false
+},
+series: [{
+		name: 'Establishments (Jobs)',
+		data: [11, 227, 38, 8, 32]
+}, {
+		name: 'Average Annual Income',
+		data: [-18, -5, -11, 6, -3]
+}]
+,
+    legend: {
+        layout: 'horizontal',
+        align: 'right',
+        verticalAlign: 'bottom',
+        y: -10,
+        floating: false,
+        borderWidth: 1,
+        shadow: true,
+		padding:20,
+
+    },
+    credits: {
+        text: 'Source: Capital News Service',
+		href: 'http://cnsmaryland.org',
+		align: 'right'
+    },
+
+	//INSERT THE NAME AND URL OF YOUR SOURCE ABOVE^^. FOR MULTIPLE SOURCES, LIST ALL IN THE "TEXT" PART AND DELETE OR COMMENT OUT THE "HREF" COMPONENT.
+
+	exporting: {
+		enabled: false
+	}
+});
+
+	//OK, HERE'S WHERE YOU HAVE TO BUILD YOUR CHART: The subcategories contain your different series of data. To use the examples from above: Let's say you're making a bar chart with county populations over time. In that case, the subcategories would be years and the data points would be the populations. In the case of a line or area or scatter chart to communicate the same data, the subcategories here would be the counties and the data points would be the populations.
+
+
+	</script>
+
+</body>
+</html>

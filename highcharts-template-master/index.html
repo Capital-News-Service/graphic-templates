@@ -7,10 +7,10 @@
 </title>
 
 <!--Log:
-	-Original 2/15/17 
+	-Original 2/15/17
 	-Updated 2/17/17 to create new internal style method for highlighting single values and to insert necessary code for thousands separator and decimal point
 	-Updated 3/1/17 to remedy bug involving HTML-based byline construction, add to color capacity, eliminate legend navigation and add U.S. state-based maps capability.
-	
+
 	Template by Evan Berkowitz/Capital News Service
 
 Begin necessary code here: -->
@@ -48,9 +48,9 @@ Begin necessary code here: -->
 
 
 <!-- ENABLE THE FOLLOWING TO HIGHLIGHT ONE DATA POINT. This color style would be best utilized for a graphic only highlighting, say, Maryland among a list of states. Uncomment it to activate, and ensure the feature being highlighted is the first series (series 0). To highlight more, simply delete sections of the internal style from the top (from period to closing bracket) for the number of highlighted items, and ensure they are the first group of series. This allows for 10 (including the highlighted feature(s)), but you can add more by copying and pasting a section of style and simply increasing the number by one each time.
-	
+
 	<style>
-		
+
 	.highcharts-color-1  {
 	fill:#808080;
 	stroke:#808080;
@@ -66,7 +66,7 @@ Begin necessary code here: -->
 	fill:#808080;
 	stroke:#808080;
 		}
-		
+
 	.highcharts-color-4  {
 	fill:#808080;
 	stroke:#808080;
@@ -74,30 +74,30 @@ Begin necessary code here: -->
 	.highcharts-color-5  {
 	fill:#808080;
 	stroke:#808080;
-}	
-		
+}
+
 		.highcharts-color-6  {
 	fill:#808080;
 	stroke:#808080;
 }
-		
+
 		.highcharts-color-7  {
 	fill:#808080;
 	stroke:#808080;
 }
-		
+
 		.highcharts-color-8  {
 	fill:#808080;
 	stroke:#808080;
 }
-		
+
 		.highcharts-color-9  {
 	fill:#808080;
 	stroke:#808080;
 }
 	</style>
 	-->
-	
+
 </head>
 <body>
 <script src="js/highcharts.js"></script>
@@ -112,44 +112,44 @@ Begin necessary code here: -->
         Highcharts.chart('container', {
     chart: {
         type: 'column'
-			
-		
+
+
 			// INSERT CHART TYPE ABOVE. FOR THE PURPOSES OF THIS TEMPLATE, USE BAR, COLUMN, AREA, AREASPLINE, SCATTER, LINE OR SPLINE ^^
-   
-	
+
+
 	},
     title: {
         text: 'Title goes in this spot here',
-		
-		
+
+
 			//INSERT HEADLINE INSIDE APOSTROPHES ABOVE ^^
-		
-		
+
+
 		align:'left'
     },
    subtitle: {
 	   	align:'left',
         text: '<span style="fill:#fbd603; font-family:sans-serif; stroke:#fbd603; stroke-width:10px; font-weight:800;">________________________________________</span><br/><span style="fill:transparent;">Space Filler Do Not Touch</span><br/>BY FIRSTNAME LASTNAME<a href="http://cnsmaryland.org" target="_blank" style="text-decoration:none;"> | CAPITAL NEWS SERVICE</a>'
-	   
+
 	   		//INSERT YOUR NAME IN ALLCAPS IN PLACE OF 'FIRSTNAME LASTNAME' IN CHUNK OF CODE ABOVE ^^
-	 
+
     },
     xAxis: {
         categories: ['Category 0', 'Category 1', 'Category 2', 'Category 3', 'Category 4'],
-        
+
 			//SET UP YOUR X-AXIS CATEGORIES ABOVE ^^. This is where you would set up type of object categories for bar/column charts or time elements for line, area, etc., charts that graph over time. For example, if you had bar categories of counties where you were measuring population over a set of years, the counties would go here in a bar or column chart. However, for the same graph as a line or area chart, the years covered would go here.
-		
+
 		title: {
             //text: 'X-Axis Label Here',
 			align: 'low'
         }
     },
-			
+
 			//SET UP YOUR X-AXIS LABEL ABOVE ^^. Uncomment if you need it.
-			
-			
-			
-			
+
+
+
+
     yAxis: {
         min: 0,
 
@@ -157,13 +157,13 @@ Begin necessary code here: -->
             text: 'Y-Axis Label Here',
             align: 'low'
         },
-		
+
 		//SET UP YOUR Y-AXIS LABEL ABOVE ^^. Or set to null...
-		
+
         labels: {
             overflow: 'justify'
         }
-		
+
     },
     tooltip: {
 		borderRadius: 0,
@@ -182,7 +182,7 @@ Begin necessary code here: -->
             },
 			color:'#e51937'
         },
-		
+
 		line: {
 			dataLabels: {
 				enabled: true
@@ -209,22 +209,22 @@ Begin necessary code here: -->
         borderWidth: 1,
         shadow: true,
 		padding:20,
-		
+
     },
     credits: {
         text: 'Source: Capital News Service',
 		href: 'http://cnsmaryland.org',
 		align: 'right'
     },
-			
+
 	//INSERT THE NAME AND URL OF YOUR SOURCE ABOVE^^. FOR MULTIPLE SOURCES, LIST ALL IN THE "TEXT" PART AND DELETE OR COMMENT OUT THE "HREF" COMPONENT.
-			
+
 	exporting: {
 		enabled: false
 	},
-			
-	//SET TO TRUE TO ALLOW EXPORTING ^^		
-			
+
+	//SET TO TRUE TO ALLOW EXPORTING ^^
+
     series: [{
         name: 'Sub-Category 1',
 		color: '#e51937',
@@ -247,10 +247,10 @@ Begin necessary code here: -->
         data: [3, 3, 3, 3, 3]
     }]
 });
-	
+
 	//OK, HERE'S WHERE YOU HAVE TO BUILD YOUR CHART: The subcategories contain your different series of data. To use the examples from above: Let's say you're making a bar chart with county populations over time. In that case, the subcategories would be years and the data points would be the populations. In the case of a line or area or scatter chart to communicate the same data, the subcategories here would be the counties and the data points would be the populations.
-	
-	
+
+
 	</script>
 
 </body>
