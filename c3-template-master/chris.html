@@ -1,0 +1,110 @@
+<!-- Bar chart including:
+  cutom title for tool tip,
+  comma and $ on tool tip and y-axis,
+  custom colors
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>
+    	Capital News Service
+    </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Poppins:300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <!-- Load c3.css -->
+	<link href="css/c3.css" rel="stylesheet">
+
+	<!-- Load our css -->
+	<link href="css/css.css" rel="stylesheet">
+
+	<!-- Load d3.js and c3.js -->
+	<script src="js/d3.min.js" charset="utf-8"></script>
+	<script src="js/c3.min.js"></script>
+
+  </head>
+
+  <body>
+   	<div id="container">
+   		<h1 class="highcharts-title">Donations between June 11 and Aug. 21 to gubernatorial candidates</h1>
+
+   		<text class="highcharts-subtitle" y="60">
+   			<tspan>BY CHRIS CIOFFI</tspan>
+   			<!-- ^^ PUT YOUR NAME HERE, TAKE CREDIT FOR YOUR COOL WORK ^^ -->
+   			<tspan onclick="location.href=&quot;http://cnsmaryland.org&quot;"> | CAPITAL NEWS SERVICE</tspan>
+   			<br>
+   			<span style="height:8px; font-size:8pt; background-color:#fbd603 ; color:#fbd603 ;">_______________________________________________</span>
+   		</text>
+   		<div id="chart"></div>
+   		<div id="source"><text><a href="https://campaignfinancemd.us/Home/Logout"><tspan>Source: Maryland State Board of Elections</tspan></a></text></div>
+   		<!-- ^^ PUT YOUR SOURCE HERE AND LINK IT^^ -->
+   	</div>
+   	<script type="text/javascript">
+
+
+var chart = c3.generate({
+    data: {
+      columns: [
+            ['Democrats', .56, .05],
+            ['Republicans', .89, .68],
+            ['Independents', .73,.23],
+        ],
+        type: 'bar',
+        //ADD CUSTOM COLORS
+      colors: {
+        'Democrats': '#1b79b9',
+        'Republicans': '#DC143C',
+        'Independents': '#8B008B',
+      },
+      color: function (color, d) {
+          // d will be 'id' when called for legends
+          return d.id && d.id === 'data3' ? d3.rgb(color).darker(d.value / 150) : color;
+      }
+
+ },
+ //ADD COMMA AND DOLLAR SIGN TO TOOL TIP
+        tooltip: {
+            format: {
+                value: function(value) {
+                    return d3.format(value)
+                }
+            }
+        },
+          //ADD COMMA AND DOLLAR SIGN TO Y AXIS
+        axis : {
+          x: {
+              type: 'category',
+              categories: [ 'Approve of Hogan\'s Job Performance', 'Approve of Trump\'s Job Performance']
+          },
+        y : {
+            tick: {
+                format: d3.format("%,")
+//                format: function (d) { return "$" + d; }
+            }
+        }
+    },
+  //HIDE LEGEND
+    legend: {
+hide: 'data1'
+  //or hide: ['data1', 'data2']
+},
+  //CUSTOM TITLE FOR TOOPTIP
+    tooltip: {
+        format: {
+            title: function (d) { return 'Percent Approve'; },
+    //            value: d3.format(',') // apply this format to both y and y2
+        }
+    }
+    });
+
+
+
+
+ 	 </script>
+  </body>
+
+</html>
