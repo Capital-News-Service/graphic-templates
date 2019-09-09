@@ -1,10 +1,3 @@
-<!-- Bar chart including:
-  cutom title for tool tip,
-  comma and $ on tool tip and y-axis,
-  custom colors
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,20 +44,11 @@ var chart = c3.generate({
     	x: 'x',
         columns: [
         	['x', 2015, 2016, 2017, 2018],
-            ['data1', 474785, 590627, 812509, 860416],
+            ['grant money', 474785, 590627, 812509, 860416],
         ],
-        type: 'bar',
-        //ADD CUSTOM COLORS
-      colors: {
-          data1: '#1b79b9'
-      },
-      color: function (color, d) {
-          // d will be 'id' when called for legends
-          return d.id && d.id === 'data3' ? d3.rgb(color).darker(d.value / 150) : color;
-      }
+        type: 'bar'
 
- },
- //ADD COMMA AND DOLLAR SIGN TO TOOL TIP
+    },
         tooltip: {
             format: {
                 value: function(value) {
@@ -72,7 +56,6 @@ var chart = c3.generate({
                 }
             }
         },
-          //ADD COMMA AND DOLLAR SIGN TO Y AXIS
         axis : {
         y : {
             tick: {
@@ -80,20 +63,9 @@ var chart = c3.generate({
 //                format: function (d) { return "$" + d; }
             }
         }
-    },
-  //HIDE LEGEND
-    legend: {
-hide: 'data1'
-  //or hide: ['data1', 'data2']
-},
-  //CUSTOM TITLE FOR TOOPTIP
-    tooltip: {
-        format: {
-            title: function (d) { return 'Grant Money ' + d; },
-    //            value: d3.format(',') // apply this format to both y and y2
-        }
     }
     });
+
 
 
 
